@@ -1,7 +1,6 @@
 # Sources et aide utilisée
 
-Consignes : `milestone-1/README_fr.md` du dépôt du cours
-(copie locale : `consignes/README_fr.md`). Le périmètre est IFT3700 : les parties
+Consignes : `milestone-1/README_fr.md` du dépôt du cours. Le périmètre est IFT3700 : les parties
 marquées « IFT6758 seulement » ne sont pas incluses.
 
 ## Références de la tâche 1
@@ -30,7 +29,7 @@ marquées « IFT6758 seulement » ne sont pas incluses.
 - [Modèle de blog du cours](https://github.com/milarobotlearningcourse/data_science_blog) :
   layouts, feuilles de style Lanyon/Poole, navigation et Gemfile repris et adaptés.
   Licence MIT conservée dans `blog/LICENSE.md` ; les articles d'exemple ne sont
-  pas repris. Empreintes des fichiers téléchargés dans `docs/template_files.json`.
+  pas repris.
 - [ipywidgets](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Events.html) :
   menus, curseur et callbacks. L'outil du projet a été écrit pour ce devoir.
 - [NumPy histogram2d](https://numpy.org/doc/stable/reference/generated/numpy.histogram2d.html) :

@@ -6,7 +6,7 @@ par un article unique pour le jalon 1.
 
 L'article contient les résultats du corpus réel complet : 10 395 matchs, cinq
 figures simples et cinq cartes interactives. `apercu.html` permet de le lire
-localement après extraction de toute l'archive, avec les cartes et leurs menus.
+localement dans un navigateur, avec les cartes et leurs menus.
 La capture réelle du widget est intégrée et les membres de l'équipe sont indiqués dans `about.md`.
 
 `python3 -m ift3700.run`, depuis le dossier parent, régénère tableaux, figures et
@@ -46,7 +46,3 @@ Ouvrir `http://localhost:8000`. Garder le terminal ouvert. Les chemins des
 ressources sont prévus pour un serveur local ; ne pas ouvrir `_site/index.html`
 par double-clic. Cette construction n'est pas mise à jour automatiquement après
 une modification de l'article : relancer `bundle exec jekyll build` dans `blog`.
-
-Avant la remise : renseigner les membres dans `_config.yml` et `about.md`,
-confirmer l'affichage et les menus des cartes dans le navigateur, puis relire
-toutes les réponses calculées.

@@ -7,8 +7,8 @@ huit saisons ont été téléchargés ; le tableau contient **650 432 tirs cadr�
 buts**, fusillades comprises. Les chiffres artificiels des tests ne figurent pas
 dans le blog livré.
 
-Après extraction complète de l'archive, ouvrir **`blog/apercu.html`** pour lire
-l'article et utiliser les menus des cinq cartes sans installer Python ou Ruby.
+Pour lire l'article et utiliser les menus des cinq cartes sans installer Python
+ou Ruby, ouvrir **`blog/apercu.html`** dans un navigateur.
 Cet aperçu local accompagne les sources Jekyll ; il ne remplace pas leur
 construction. La capture est intégrée et le site Jekyll a été construit et
 contrôlé sur le Mac de l'équipe.
@@ -18,13 +18,13 @@ Enric Soldevila (20247337).
 
 ## Première utilisation : tâche 1
 
-L'archive de travail inclut déjà le cache réel complet. Les commandes ci-dessous
-documentent l'acquisition et permettent de la reproduire ; avec ce cache, elles
-relisent les fichiers existants. Les totaux par saison figurent dans
+Les données brutes ne sont pas incluses dans le dépôt (environ 10 400 fichiers JSON) :
+les commandes ci-dessous les téléchargent dans `data/raw/`. Une fois en cache,
+elles relisent les fichiers existants sans nouvelle requête. Les totaux par saison figurent dans
 `docs/acquisition_summary.csv`.
 
 Python 3.11 ou plus récent suffit ; aucun paquet externe n'est requis pour
-l'acquisition. Extraire l'archive, puis ouvrir un terminal **dans ce dossier**.
+l'acquisition. Ouvrir un terminal **à la racine du projet**.
 Sur Windows, remplacer `python3` par `py` au besoin.
 
 1. Télécharger un match et vérifier que son JSON est disponible :
@@ -84,8 +84,7 @@ avec une nouvelle réponse validée. L'ancien fichier reste intact si cette
 nouvelle requête échoue. `--offline` interdit toute requête réseau.
 
 Le dossier `data/` est ignoré par Git : **ne pas déposer les données brutes sur
-GitHub**. Pour une remise, on préparera les ZIP du code et du blog séparément.
-Cette archive de travail n'est pas encore la remise finale.
+GitHub**.
 
 ## Vérification locale du code
 
@@ -148,7 +147,7 @@ peut sélectionner d'autres versions que celles qui ont été vérifiées.
    `outputs/`. Les figures et fragments de cartes sont également copiés dans le
    blog. Les décomptes d'exclusions sont écrits dans `outputs/analysis_exclusions.json`.
    `blog/apercu.html` permet de lire l'article et ses cartes localement avant
-   d'installer Ruby ; ouvrir ce fichier après avoir extrait toute l'archive.
+   d'installer Ruby.
    Cet aperçu n'est pas la construction Jekyll de la remise.
 5. Dans `blog/`, avec Ruby ≥ 3.2 et Bundler :
 
@@ -175,13 +174,10 @@ sans appliquer les bris d'égalité officiels.
 
 ## Explications et provenance
 
-- `docs/tache_1_acquisition.md` : tutoriel et texte préparatoire pour le blog.
 - `notebooks/01_acquisition.ipynb` : exemples Python de la tâche 1.
 - `notebooks/02_explorateur.ipynb` : tâche 2 et instructions de capture.
 - `notebooks/03_donnees_et_figures.ipynb` : tâches 3 à 5.
 - `docs/sources.md` : références et déclaration de l'aide de l'IA.
 - `docs/verification.md` : contrôles effectués sur les données réelles.
 
-Les membres de l'équipe figurent dans `blog/_config.yml` et `blog/about.md`. Le dossier `consignes/` conserve les instructions reçues.
-L'archive de travail rassemble code et blog pour faciliter le démarrage ; on
-préparera leurs deux ZIP de remise **séparés** après la validation finale.
+Les membres de l'équipe figurent dans `blog/_config.yml` et `blog/about.md`.
