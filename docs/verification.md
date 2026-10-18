@@ -50,7 +50,7 @@
   25 pieds du centre ne contredit sa zone déclarée. Exemple vérifié : but de Buffalo,
   match `2019020256`, événement 73, maintenant à 25,61 pieds au lieu de 158,81.
   Seules les analyses de 2019-20 et 2020-21 changent ; les chiffres du blog ont été
-  mis à jour. 36 tests passent, dont un sur cet événement réel.
+  mis à jour. 37 tests passent, dont un sur cet événement réel.
 - Les directions ambiguës restent manquantes. Une médiane de coordonnées ne
   tranche pas des votes contradictoires de zones ; avec une majorité inférée,
   un événement qui la contredit reste également inconnu. Les comptes par source

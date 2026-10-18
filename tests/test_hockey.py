@@ -36,8 +36,12 @@ class HockeyTests(unittest.TestCase):
         self.assertTrue(pd.isna(frame.loc[5, "x"]))
         self.assertTrue(pd.isna(frame.loc[5, "empty_net"]))
         self.assertTrue(pd.isna(frame.loc[5, "distance_ft"]))
-        self.assertTrue(pd.isna(frame.loc[2, "strength"]))
+        self.assertEqual(frame.loc[2, "strength"], "EV")
+        self.assertEqual(frame.loc[2, "strength_detail"], "5c5")
         self.assertEqual(frame.loc[3, "strength"], "PP")
+        self.assertEqual(frame.loc[3, "strength_detail"], "5c4")
+        self.assertTrue(pd.isna(frame.loc[5, "strength"]))
+        self.assertTrue(pd.isna(frame.loc[5, "strength_detail"]))
 
     def test_rotation_and_attacking_goal_distance(self):
         frame = game_to_frame(synthetic_game()).set_index("event_id")
@@ -64,6 +68,15 @@ class HockeyTests(unittest.TestCase):
         goal = game_to_frame(game).set_index("event_id").loc[3]
         self.assertTrue(goal.empty_net)
         self.assertTrue(pd.isna(goal.strength))
+        self.assertEqual(goal.strength_detail, "5c6")
+
+    def test_shot_strength_from_away_perspective(self):
+        game = synthetic_game()
+        game["plays"][1]["details"]["eventOwnerTeamId"] = 2
+        game["plays"][1]["situationCode"] = "1541"
+        shot = game_to_frame(game).set_index("event_id").loc[2]
+        self.assertEqual(shot.strength, "PP")
+        self.assertEqual(shot.strength_detail, "5c4")
 
     def test_event_side_takes_priority_when_period_metadata_changes(self):
         game = synthetic_game()

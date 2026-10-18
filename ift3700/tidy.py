@@ -142,15 +142,17 @@ def game_to_frame(game: dict) -> pd.DataFrame:
         empty_net = details.get("emptyNet")
         if not isinstance(empty_net, bool):
             empty_net = opponent_goalie == 0 if opponent_goalie is not None else None
+        # Tirs et buts : champ explicite s'il existe, sinon situationCode avec les deux gardiens présents.
+        # Un filet vide (6 contre 5, pénalité différée, fusillade) laisse la catégorie manquante.
         strength = None
-        if event_type == "goal":
-            explicit = details.get("strength")
-            if isinstance(explicit, dict):
-                explicit = explicit.get("code")
-            if isinstance(explicit, str) and explicit.upper() in {"EV", "PP", "SH"}:
-                strength = explicit.upper()
-            elif own_sk is not None and opponent_sk is not None and ag == 1 and hg == 1:
-                strength = "EV" if own_sk == opponent_sk else "PP" if own_sk > opponent_sk else "SH"
+        explicit = details.get("strength")
+        if isinstance(explicit, dict):
+            explicit = explicit.get("code")
+        if isinstance(explicit, str) and explicit.upper() in {"EV", "PP", "SH"}:
+            strength = explicit.upper()
+        elif own_sk is not None and opponent_sk is not None and ag == 1 and hg == 1:
+            strength = "EV" if own_sk == opponent_sk else "PP" if own_sk > opponent_sk else "SH"
+        strength_detail = f"{own_sk}c{opponent_sk}" if own_sk is not None and opponent_sk is not None else None
         rows.append({
             "game_id": game["id"], "event_id": play.get("eventId"), "season": game["season"],
             "game_type": game["gameType"], "game_date": game.get("gameDate"),
@@ -160,13 +162,14 @@ def game_to_frame(game: dict) -> pd.DataFrame:
             "shooter_id": shooter_id, "shooter_name": players.get(shooter_id),
             "goalie_id": goalie_id, "goalie_name": players.get(goalie_id),
             "shot_type": details.get("shotType") or None, "empty_net": empty_net, "strength": strength,
+            "strength_detail": strength_detail,
             "situation_code": play.get("situationCode"), "own_skaters": own_sk, "opponent_skaters": opponent_sk,
             "x_normalized": xn, "y_normalized": yn, "direction_source": direction_source,
             "distance_ft": distance,
         })
     columns = ["game_id", "event_id", "season", "game_type", "game_date", "period", "period_type",
                "time_in_period", "team_id", "team", "event_type", "is_goal", "x", "y", "shooter_id",
-               "shooter_name", "goalie_id", "goalie_name", "shot_type", "empty_net", "strength",
+               "shooter_name", "goalie_id", "goalie_name", "shot_type", "empty_net", "strength", "strength_detail",
                "situation_code", "own_skaters", "opponent_skaters", "x_normalized", "y_normalized",
                "direction_source", "distance_ft"]
     frame = pd.DataFrame(rows, columns=columns)

@@ -263,6 +263,7 @@ et décomptés à la fin de l'article.</p>
       <th>shot_type</th>
       <th>empty_net</th>
       <th>strength</th>
+      <th>strength_detail</th>
       <th>situation_code</th>
       <th>own_skaters</th>
       <th>opponent_skaters</th>
@@ -294,7 +295,8 @@ et décomptés à la fin de l'article.</p>
       <td>Craig Anderson</td>
       <td>wrist</td>
       <td>False</td>
-      <td>None</td>
+      <td>EV</td>
+      <td>5c5</td>
       <td>1551</td>
       <td>5</td>
       <td>5</td>
@@ -324,7 +326,8 @@ et décomptés à la fin de l'article.</p>
       <td>Frederik Andersen</td>
       <td>wrist</td>
       <td>False</td>
-      <td>None</td>
+      <td>EV</td>
+      <td>5c5</td>
       <td>1551</td>
       <td>5</td>
       <td>5</td>
@@ -354,7 +357,8 @@ et décomptés à la fin de l'article.</p>
       <td>Frederik Andersen</td>
       <td>wrist</td>
       <td>False</td>
-      <td>None</td>
+      <td>EV</td>
+      <td>5c5</td>
       <td>1551</td>
       <td>5</td>
       <td>5</td>
@@ -384,7 +388,8 @@ et décomptés à la fin de l'article.</p>
       <td>Frederik Andersen</td>
       <td>slap</td>
       <td>False</td>
-      <td>None</td>
+      <td>EV</td>
+      <td>5c5</td>
       <td>1551</td>
       <td>5</td>
       <td>5</td>
@@ -414,7 +419,8 @@ et décomptés à la fin de l'article.</p>
       <td>Craig Anderson</td>
       <td>wrist</td>
       <td>False</td>
-      <td>None</td>
+      <td>EV</td>
+      <td>5c5</td>
       <td>1551</td>
       <td>5</td>
       <td>5</td>
@@ -444,7 +450,8 @@ et décomptés à la fin de l'article.</p>
       <td>Craig Anderson</td>
       <td>wrist</td>
       <td>False</td>
-      <td>None</td>
+      <td>EV</td>
+      <td>5c5</td>
       <td>1551</td>
       <td>5</td>
       <td>5</td>
@@ -475,6 +482,7 @@ et décomptés à la fin de l'article.</p>
       <td>wrist</td>
       <td>False</td>
       <td>EV</td>
+      <td>5c5</td>
       <td>1551</td>
       <td>5</td>
       <td>5</td>
@@ -504,7 +512,8 @@ et décomptés à la fin de l'article.</p>
       <td>Craig Anderson</td>
       <td>wrist</td>
       <td>False</td>
-      <td>None</td>
+      <td>EV</td>
+      <td>5c5</td>
       <td>1551</td>
       <td>5</td>
       <td>5</td>
@@ -534,7 +543,8 @@ et décomptés à la fin de l'article.</p>
       <td>Frederik Andersen</td>
       <td>slap</td>
       <td>False</td>
-      <td>None</td>
+      <td>EV</td>
+      <td>5c5</td>
       <td>1551</td>
       <td>5</td>
       <td>5</td>
@@ -564,7 +574,8 @@ et décomptés à la fin de l'article.</p>
       <td>Frederik Andersen</td>
       <td>wrist</td>
       <td>False</td>
-      <td>None</td>
+      <td>EV</td>
+      <td>5c5</td>
       <td>1551</td>
       <td>5</td>
       <td>5</td>
@@ -576,24 +587,61 @@ et décomptés à la fin de l'article.</p>
   </tbody>
 </table></div>
 
-<h3>3.1. Force réelle sur la glace</h3>
-<p>L'API actuelle peut fournir un <code>situationCode</code> sur les tirs et les buts : ses
-quatre chiffres décrivent la présence du gardien visiteur, le nombre de patineurs
-visiteurs, le nombre de patineurs du domicile et la présence du gardien du
-domicile. Nous conservons les nombres de patineurs lorsqu'ils sont disponibles.
-Pour un but, en l'absence d'un champ explicite EV/PP/SH, comparer les patineurs
-permet une classification lorsque les deux gardiens sont présents. Si un gardien
-est retiré, cette comparaison ne suffit pas à identifier une pénalité : la
-classification reste manquante plutôt que de confondre filet désert et avantage.</p>
-<p>Pour les événements sans ce code, on pourrait parcourir <strong>tous</strong> les événements
-chronologiquement et maintenir les pénalités actives avec leurs durées. Il faut
-tenir compte des pénalités coïncidentes, des doubles mineures, des majeures, de
-la fin éventuelle d'une mineure après un but en avantage, des changements de
-période et des règles de prolongation. Les retraits de gardien ajoutent une
-autre difficulté. Les événements ne décrivent pas nécessairement chaque
-changement de joueur : sans état fiable ou données de présences, certaines
-forces exactes doivent rester inconnues. Une reconstruction supplémentaire
-fondée sur les pénalités n'est pas implémentée pour ce jalon.</p>
+<h3>3.1. Force sur la glace : catégorie et force réelle</h3>
+<p><strong>Dérivation à partir du <code>situationCode</code>.</strong> Chaque tir et chaque but porte un
+code à quatre chiffres <code>[gardien visiteur][patineurs visiteurs][patineurs locaux][gardien local]</code>.
+Nous le lisons du point de vue de l'équipe qui tire : si elle joue à domicile,
+ses patineurs sont le troisième chiffre et ceux de l'adversaire le deuxième ;
+si elle est en visite, c'est l'inverse. Par exemple, <code>1451</code> donne <strong>5 contre 4</strong>
+pour l'équipe locale et <strong>4 contre 5</strong> pour l'équipe visiteuse.</p>
+<ul>
+<li>La <strong>force réelle</strong> (<code>strength_detail</code>) est ce couple de patineurs, écrit <code>5c4</code>,
+<code>4c4</code>, <code>6c5</code>, etc. Les nombres eux-mêmes restent dans <code>own_skaters</code> et
+<code>opponent_skaters</code>.</li>
+<li>La <strong>catégorie</strong> (<code>strength</code>) n'est calculée que si <strong>les deux gardiens sont dans
+leur filet</strong> : autant de patineurs de chaque côté donne <code>EV</code> (forces égales),
+davantage pour l'équipe qui tire donne <code>PP</code> (avantage numérique) et moins donne
+<code>SH</code> (désavantage numérique). Un champ explicite EV/PP/SH aurait priorité, mais
+l'API actuelle n'en fournit pas.</li>
+</ul>
+<p>La même règle s'applique aux tirs et aux buts. Hors fusillades, la catégorie est
+connue pour <strong>97,5 %</strong> des 646 116 tirs cadrés et buts : 476 559 tirs et 43 224 buts
+à forces égales, 79 101 tirs et 12 259 buts en avantage numérique, 16 925 tirs
+et 1 620 buts en désavantage numérique. La situation <code>5c5</code> représente 78 % des
+événements, et <code>5c4</code> 13,5 %.</p>
+<p><strong>Cas limites que le code ne règle pas directement.</strong></p>
+<ul>
+<li><strong>Gardien retiré</strong> (<code>0651</code>, <code>1560</code>, environ 13 900 événements) : un <code>6c5</code>
+peut correspondre à un attaquant supplémentaire à forces égales en fin de match
+ou à un avantage numérique avec le gardien retiré. Comparer les patineurs
+confondrait ces cas, donc la catégorie reste <strong>manquante</strong>, alors que
+<code>strength_detail</code> et <code>empty_net</code> restent renseignés.</li>
+<li><strong>Pénalité différée</strong> : l'équipe qui va bénéficier de la pénalité retire son
+gardien avant que le jeu soit arrêté. Le code montre alors un <code>6c5</code> alors
+qu'aucun avantage numérique n'a encore commencé. C'est le même code qu'un retrait
+de fin de match. L'API inscrit toutefois un événement <code>delayed-penalty</code> au début
+de la séquence, qui permettrait de distinguer ces cas ; nous ne l'exploitons pas
+encore et la catégorie reste manquante.</li>
+<li><strong>Tirs de pénalité</strong> (<code>1010</code>, 171 événements hors fusillade) : un tireur seul
+face au gardien, sans force de jeu au sens habituel ; la catégorie reste manquante.</li>
+<li><strong>Pénalités coïncidentes et prolongation</strong> : <code>4c4</code> et <code>3c3</code> sont bien des forces
+égales (<code>EV</code>), mais leur contexte diffère d'un <code>5c5</code>, d'où l'intérêt de garder
+la force réelle à côté de la catégorie.</li>
+<li><strong>Instantané</strong> : le code décrit les joueurs sur la glace au moment de l'événement.
+Il ne dit pas combien de temps il reste à une pénalité, ni si un but en avantage
+numérique y met fin.</li>
+</ul>
+<p><strong>Vérifier ou reconstruire la force sans <code>situationCode</code>.</strong> On parcourrait <strong>tous</strong>
+les événements dans l'ordre chronologique en maintenant la liste des pénalités
+actives avec leurs durées (<code>penalty</code>, champ <code>duration</code>). Il faut alors gérer les
+pénalités coïncidentes, les doubles mineures, les majeures, la fin d'une mineure
+après un but en avantage, les changements de période et les règles de
+prolongation. Les retraits de gardien ajoutent une difficulté, car ils
+n'apparaissent pas comme des événements. La même reconstruction servirait de
+<strong>contrôle</strong> du code : un <code>5c4</code> qui ne correspond à aucune pénalité active serait
+suspect. On pourrait aussi comparer nos buts <code>PP</code> et <code>SH</code> par équipe aux totaux
+officiels de l'API des statistiques. Cette reconstruction n'est pas implémentée
+pour ce jalon.</p>
 <h3>3.2. Caractéristiques supplémentaires possibles</h3>
 <ul>
 <li><strong>Distance au filet</strong> : après normalisation du sens d'attaque, mesurer la
