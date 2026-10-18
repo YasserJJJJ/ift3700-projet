@@ -31,18 +31,23 @@ La bibliothèque Plotly est locale ; les cartes ne nécessitent pas Internet.
 Les HTML autonomes correspondants sont produits dans `outputs/maps/` du projet.
 Ne pas publier sur GitHub Pages pendant le cours.
 
-Le site a été construit avec Ruby 3.2.3, Bundler 2.6.9 et Jekyll 4.4.1.
+Le site a été construit avec Ruby 3.3.12, Bundler 2.6.9 et Jekyll 4.4.1.
 `Gemfile.lock` conserve les versions utilisées et inclut les plateformes Mac
-Intel et Apple Silicon. Le détail des vérifications figure dans
-`../docs/verification_jekyll.md`.
+Intel et Apple Silicon.
 
-Pour consulter la version déjà construite sans Ruby, depuis la racine du projet :
+Le dossier `_site/` n'est pas versionné (il est exclu par `.gitignore`) : il faut
+donc construire le site avant de le consulter. Sans Ruby, ouvrir directement
+`apercu.html` dans un navigateur : il contient le même article et les cartes
+interactives.
+
+Après `bundle exec jekyll build`, on peut aussi servir la version construite
+depuis la racine du projet :
 
 ```bash
 python3 -m http.server 8000 --directory blog/_site
 ```
 
-Ouvrir `http://localhost:8000`. Garder le terminal ouvert. Les chemins des
+Ouvrir `http://localhost:8000` et garder le terminal ouvert. Les chemins des
 ressources sont prévus pour un serveur local ; ne pas ouvrir `_site/index.html`
-par double-clic. Cette construction n'est pas mise à jour automatiquement après
-une modification de l'article : relancer `bundle exec jekyll build` dans `blog`.
+par double-clic. Après une modification de l'article, relancer
+`bundle exec jekyll build` dans `blog`.

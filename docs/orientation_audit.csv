@@ -9,4 +9,4 @@ game_id,event_id,period,side,zone,team,x,y,x_normalized,y_normalized,direction_s
 2023020078,514,2,right,O,SEA,-29.0,-37.0,29.0,37.0,api_event_side_conflict
 2023020078,649,2,left,O,NYR,-57.0,-27.0,57.0,27.0,api_event_side_conflict
 2019020014,107,1,left,O,NYI,78.0,-19.0,78.0,-19.0,api_event_side_conflict
-2019020019,884,4,right,O,MTL,-42.0,-5.0,-42.0,-5.0,api_event_side_conflict
+2019020019,884,4,right,O,MTL,-42.0,-5.0,,,unknown_api_side_zone_conflict
