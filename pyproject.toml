@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ift3700-nhl"
+version = "0.1.0"
+description = "Projet LNH — IFT3700, jalon 1"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+analysis = ["pandas>=2.2,<3", "numpy>=1.26,<3", "matplotlib>=3.8,<4", "plotly>=5.24,<8", "ipywidgets>=8.1,<9", "jupyterlab>=4,<5", "mistune>=3,<4"]
+
+[tool.setuptools.packages.find]
+include = ["ift3700*"]

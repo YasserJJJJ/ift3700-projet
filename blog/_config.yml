@@ -1,0 +1,19 @@
+title: "Projet LNH — IFT3700"
+tagline: "Jalon 1 : acquisition et exploration des données"
+description: "Projet de science des données sur les événements de hockey."
+url: ""
+baseurl: ""
+paginate: 5
+permalink: pretty
+future: true
+author:
+  name: "Mohamed Yasser Jabari (20270150) & Cheikh Ahmed Khalifa (20228606) & Enric Soldevila (20247337)"
+  url: ""
+plugins:
+  - jekyll-paginate
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - apercu.html

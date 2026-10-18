@@ -1,0 +1,74 @@
+{
+  "blog": [
+    {
+      "path": "404.md",
+      "sha": "d27f5915b487e7800a0f6d64ab2b98d35effb1b4",
+      "source": "https://github.com/milarobotlearningcourse/data_science_blog/blob/main/404.md"
+    },
+    {
+      "path": "Gemfile",
+      "sha": "e66e6176d27950111026d62c1e1741c8da6beeb6",
+      "source": "https://github.com/milarobotlearningcourse/data_science_blog/blob/main/Gemfile"
+    },
+    {
+      "path": "LICENSE.md",
+      "sha": "af1b0ec7b66fd8078fa83284d91189a574f98be5",
+      "source": "https://github.com/milarobotlearningcourse/data_science_blog/blob/main/LICENSE.md"
+    },
+    {
+      "path": "_includes/head.html",
+      "sha": "44e3f5d6fb2a32783f999ac3d4443f1b9469c2d6",
+      "source": "https://github.com/milarobotlearningcourse/data_science_blog/blob/main/_includes/head.html"
+    },
+    {
+      "path": "_includes/sidebar.html",
+      "sha": "dde6a22f020ab475bdeea6154b658ff4dd42b369",
+      "source": "https://github.com/milarobotlearningcourse/data_science_blog/blob/main/_includes/sidebar.html"
+    },
+    {
+      "path": "_layouts/default.html",
+      "sha": "544ea8ea90b08e6e13e6b0b51b5b95d559d09f64",
+      "source": "https://github.com/milarobotlearningcourse/data_science_blog/blob/main/_layouts/default.html"
+    },
+    {
+      "path": "_layouts/page.html",
+      "sha": "4e0d4ebf09ee2756cfc8c0087e0a3d73be00cc2f",
+      "source": "https://github.com/milarobotlearningcourse/data_science_blog/blob/main/_layouts/page.html"
+    },
+    {
+      "path": "_layouts/post.html",
+      "sha": "c4bc2533557e5033a9c9d3c503467232f10ec074",
+      "source": "https://github.com/milarobotlearningcourse/data_science_blog/blob/main/_layouts/post.html"
+    },
+    {
+      "path": "index.html",
+      "sha": "732d9f1754f3cba3a9b40f92749b008def353487",
+      "source": "https://github.com/milarobotlearningcourse/data_science_blog/blob/main/index.html"
+    },
+    {
+      "path": "public/css/lanyon.css",
+      "sha": "04348084bc8253c8ba66a5bd33a34a55a09e423f",
+      "source": "https://github.com/milarobotlearningcourse/data_science_blog/blob/main/public/css/lanyon.css"
+    },
+    {
+      "path": "public/css/poole.css",
+      "sha": "8ec27e7a8441866eca968039d5b6869c0aa87a0d",
+      "source": "https://github.com/milarobotlearningcourse/data_science_blog/blob/main/public/css/poole.css"
+    },
+    {
+      "path": "public/css/syntax.css",
+      "sha": "15ad797710b371117c3c0a1be1b4bca590b16f94",
+      "source": "https://github.com/milarobotlearningcourse/data_science_blog/blob/main/public/css/syntax.css"
+    },
+    {
+      "path": "public/js/script.js",
+      "sha": "b47910a187552c050325c2de63bffb7385c63621",
+      "source": "https://github.com/milarobotlearningcourse/data_science_blog/blob/main/public/js/script.js"
+    }
+  ],
+  "rink": {
+    "path": "figures/nhl_rink.png",
+    "sha": "270119f1e496ebcf15b954d0f4f009e224ff9ca0",
+    "source": "https://github.com/milarobotlearningcourse/data_science_project/blob/main/figures/nhl_rink.png"
+  }
+}

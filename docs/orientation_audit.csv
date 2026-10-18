@@ -1,0 +1,12 @@
+game_id,event_id,period,side,zone,team,x,y,x_normalized,y_normalized,direction_source
+2016020056,211,2,,D,FLA,56.0,12.0,<NA>,<NA>,unknown_zone_conflict
+2016020109,392,3,,O,COL,-76.0,-18.0,76.0,18.0,inferred_zone_majority
+2016020466,702,4,,D,CAR,78.0,-6.0,<NA>,<NA>,
+2016020596,440,3,,O,FLA,75.0,-17.0,<NA>,<NA>,
+2021020942,656,3,left,O,TOR,-76.0,-17.0,76.0,17.0,api_event_side_conflict
+2023020078,55,1,left,O,SEA,62.0,38.0,62.0,38.0,api_event_side_conflict
+2023020078,318,1,right,O,NYR,57.0,13.0,57.0,13.0,api_event_side_conflict
+2023020078,514,2,right,O,SEA,-29.0,-37.0,29.0,37.0,api_event_side_conflict
+2023020078,649,2,left,O,NYR,-57.0,-27.0,57.0,27.0,api_event_side_conflict
+2019020014,107,1,left,O,NYI,78.0,-19.0,78.0,-19.0,api_event_side_conflict
+2019020019,884,4,right,O,MTL,-42.0,-5.0,-42.0,-5.0,api_event_side_conflict

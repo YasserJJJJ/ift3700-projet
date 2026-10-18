@@ -1,0 +1,8 @@
+.content { max-width: 65rem; }
+.container { max-width: 70rem; }
+.table-scroll { overflow-x: auto; margin: 1.5rem 0; }
+.table-scroll table { font-size: .75rem; white-space: nowrap; }
+pre { overflow: auto; max-height: 35rem; }
+.pending { border-left: 4px solid #b66b09; padding: .7rem 1rem; background: #fff6e8; }
+.plotly-graph-div { width: 100%; }
+img { max-width: 100%; }

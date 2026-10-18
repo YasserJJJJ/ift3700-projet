@@ -1,0 +1,14 @@
+# Les données et résultats reproductibles restent sur le disque local.
+data/
+outputs/
+__pycache__/
+*.py[cod]
+.venv/
+.ipynb_checkpoints/
+.DS_Store
+*.egg-info/
+dist/
+build/
+blog/_site/
+blog/.jekyll-cache/
+*.log
