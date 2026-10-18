@@ -26,7 +26,7 @@
 - `blog/apercu.html`, ses cinq cartes et la bibliothèque Plotly locale sont
   générés. Le notebook de la tâche 2 passe les tests de sélection de match,
   saison, type d'événement, et d'événement sans coordonnées.
-- Les **36 tests locaux passent**, dont le pipeline de bout en bout sur un
+- Les **37 tests locaux passent**, dont le pipeline de bout en bout sur un
   corpus artificiel isolé. Ces fixtures servent uniquement aux tests et ne
   figurent pas dans les résultats de l'article.
 
